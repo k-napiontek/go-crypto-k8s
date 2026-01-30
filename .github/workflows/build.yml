@@ -49,4 +49,4 @@ jobs:
         context: "./app"
         push: true
         tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}:${{ steps.release.outputs.new-tag }}
+          ${{ secrets.DOCKERHUB_USERNAME }}:${{ steps.release.outputs.new-tag }}
