@@ -4,7 +4,10 @@ replicas:
 - name: my-app
   count: 1
 images:
-- name: karol0945/go-crypto-k8s
+- name: 424432388155.dkr.ecr.us-east-1.amazonaws.com/antonputra/app-lesson-268
+  # 2. 'newName' to jest nazwa Twojego nowego obrazu
+  newName: karol0945/go-crypto-k8s
+  # 3. 'newTag' to wersja
   newTag: v0.1.4
 resources:
 - ../../base
