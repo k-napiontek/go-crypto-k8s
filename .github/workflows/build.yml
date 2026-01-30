@@ -27,7 +27,7 @@ jobs:
       uses: actions/checkout@v5
 
 
-      
+
     - name: Login to Docker Hub
       uses: docker/login-action@v3
       with:
@@ -38,7 +38,7 @@ jobs:
       id: release
       run: |
         chmod +x ./scripts/git_update.sh
-        bash ./scripts/git_update.sh -v patch
+        bash ./app/scripts/git_update.sh -v patch
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
