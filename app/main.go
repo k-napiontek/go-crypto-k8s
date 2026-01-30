@@ -94,14 +94,14 @@ func getBitcoinPrice(w http.ResponseWriter, r *http.Request) {
 }
 
 func readinessHandler(w http.ResponseWriter, r *http.Request) {
-	client := http.Client{Timeout: 2 * time.Second}
-	_, err := client.Get("https://www.google.com")
+	// client := http.Client{Timeout: 2 * time.Second}
+	// _, err := client.Get("https://www.google.com")
 	
-	if err != nil {
-		w.WriteHeader(http.StatusServiceUnavailable)
-		w.Write([]byte("NOT READY"))
-		return
-	}
+	// if err != nil {
+	// 	w.WriteHeader(http.StatusServiceUnavailable)
+	// 	w.Write([]byte("NOT READY"))
+	// 	return
+	// }
 
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("READY"))
