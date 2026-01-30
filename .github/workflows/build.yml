@@ -4,7 +4,7 @@ name: Build and Push App to Docker Hub
 env:
   AWS_REGION: us-east-1
   AWS_IAM_ROLE: arn:aws:iam::438950223046:role/github-actions
-
+  IMAGE_NAME: go-crypto-k8s
 
 on:
   push:
@@ -49,4 +49,4 @@ jobs:
         context: "./app"
         push: true
         tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}:${{ steps.release.outputs.new-tag }}
+          ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ steps.release.outputs.new-tag }}
