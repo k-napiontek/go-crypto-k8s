@@ -8,6 +8,6 @@ images:
   # 2. 'newName' to jest nazwa Twojego nowego obrazu
   newName: karol0945/go-crypto-k8s
   # 3. 'newTag' to wersja
-  newTag: v0.1.5
+  newTag: v0.1.6
 resources:
 - ../../base

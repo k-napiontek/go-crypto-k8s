@@ -49,6 +49,10 @@ func main() {
 	http.HandleFunc("/bitcoin", getBitcoinPrice)
 	// Podpinamy nasz rejestr pod /metrics
 	http.Handle("/metrics", promhttp.HandlerFor(reg, promhttp.HandlerOpts{}))
+	http.HandleFunc("/healthz/live", func(w http.ResponseWriter, r *http.Request) {
+        w.WriteHeader(http.StatusOK)
+        w.Write([]byte("ok"))
+    })
 	http.HandleFunc("/healthz/ready", readinessHandler)
 
 	log.Printf("Aplikacja startuje na porcie %s...", port)
