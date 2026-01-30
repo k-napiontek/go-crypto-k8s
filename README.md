@@ -13,3 +13,11 @@ ECR
 terraform init -backend-config=../state.config 
 
 terraform apply -var-file=../global.tfvars  
+
+terragrunt??
+
+Github Actions
+
+VPC
+terraform init -backend-config=../state.config 
+terraform apply -var-file=../dev.tfvars -var-file=./vpc.tfvars 
