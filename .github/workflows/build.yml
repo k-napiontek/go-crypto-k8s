@@ -37,7 +37,7 @@ jobs:
     - name: Release new version
       id: release
       run: |
-        chmod +x ./scripts/git_update.sh
+        chmod +x ./app/scripts/git_update.sh
         bash ./app/scripts/git_update.sh -v patch
 
     - name: Set up Docker Buildx
