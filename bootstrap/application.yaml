@@ -8,9 +8,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:antonputra/k8s-lesson-268.git
+    repoURL: git@github.com:k-napiontek/go-crypto-k8s.git
     targetRevision: HEAD
-    path: envs/dev/apps
+    path: k8s/overlays/dev
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
