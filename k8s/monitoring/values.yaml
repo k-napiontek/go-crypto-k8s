@@ -1,0 +1,18 @@
+# Nadpisania dla kube-prometheus-stack (subchart)
+kube-prometheus-stack:
+  prometheus:
+    prometheusSpec:
+      retention: 15d
+      storageSpec:
+        volumeClaimTemplate:
+          spec:
+            resources:
+              requests:
+                storage: 10Gi
+  grafana:
+    adminPassword: ""
+    persistence:
+      enabled: true
+      size: 1Gi
+  alertmanager:
+    enabled: false
