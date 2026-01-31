@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bootstrap-infra
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/k-napiontek/go-crypto-k8s.git
+    targetRevision: HEAD
+    path: k8s/infrastructure  # <--- TU JEST KLUCZ! Wskazujemy na folder z Prometheusem
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd # Bo w tym folderze leży plik rodzaju "Application", który musi trafić do Argo
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
