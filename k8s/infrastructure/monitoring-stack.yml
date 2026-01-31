@@ -1,28 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: monitoring-stack
+  name: monitoring-stack # (lub jakkolwiek nazwałeś tę apkę)
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     repoURL: https://prometheus-community.github.io/helm-charts
     chart: kube-prometheus-stack
-    targetRevision: 69.3.3 # Wersja stabilna
+    targetRevision: 69.3.3
     helm:
       values: |
-        grafana:
-          adminPassword: "admin" # Do CV OK, w pracy użyj Secretów
-          service:
-            type: ClusterIP
-        prometheus:
-          prometheusSpec:
-            # KLUCZOWE: Pozwala Prometheusowi widzieć Twoją apkę
-            serviceMonitorSelectorNilUsesHelmValues: false
-            serviceMonitorSelector: {} 
-            serviceMonitorNamespaceSelector: {}
+        # ... twoje values ...
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
@@ -32,3 +21,5 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+      # 👇 TO JEST KLUCZ DO ROZWIĄZANIA PROBLEMU 👇
+      - ServerSideApply=true
