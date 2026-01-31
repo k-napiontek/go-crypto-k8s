@@ -1,0 +1,17 @@
+# PLIK: k8s/app/service-monitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: go-crypto-monitor
+  namespace: default # Tam gdzie stoi Twoja apka
+  labels:
+    release: monitoring-stack # MUSI PASOWAĆ do nazwy release'u Prometheusa (zazwyczaj nazwa Argo App)
+    # Jeśli to nie zadziała, ArgoCD pokaże błąd - wtedy usuniemy tę linię, bo włączyłem "selector: {}" w kroku 2
+spec:
+  selector:
+    matchLabels:
+      app: go-crypto-k8s # To musi być w Twoim Deployment.yaml w sekcji labels!
+  endpoints:
+  - port: http # Nazwa portu zdefiniowana w Twoim Service.yaml
+    path: /metrics
+    interval: 15s
