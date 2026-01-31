@@ -11,7 +11,11 @@ spec:
     targetRevision: 69.3.3
     helm:
       values: |
-        # ... twoje values ...
+        prometheus:
+          prometheusSpec:
+            serviceMonitorNamespaceSelector: {}
+            serviceMonitorSelector: {}
+            serviceMonitorSelectorNilUsesHelmValues: false
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring

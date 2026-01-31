@@ -1,0 +1,8 @@
+prometheus:
+  prometheusSpec:
+    # Szukaj ServiceMonitorów we WSZYSTKICH namespace’ach (nie tylko w "monitoring")
+    serviceMonitorNamespaceSelector: {}
+    # Wybierz wszystkie ServiceMonitory (albo zostaw selector z release: monitoring-stack)
+    serviceMonitorSelector: {}
+    # Żeby pusty selector oznaczał "wszystkie", a nie "tylko z tego release’u"
+    serviceMonitorSelectorNilUsesHelmValues: false
